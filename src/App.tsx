@@ -22,7 +22,7 @@ interface stateItem {
 
 export default function App() {
   const [isLoading, setIsLoading] = React.useState(true);
-  const [dt, setDt] = React.useState(null);
+  const [dt, setDt] = React.useState("");
 
   const list = useAsyncList({
     async load({ signal }) {
@@ -31,7 +31,8 @@ export default function App() {
       });
       const json = await res.json();
       setIsLoading(false);
-      setDt(json.dt);
+      const event = new Date(json.dt);
+      setDt(event.toLocaleString("en-US"));
 
       return {
         items: json.data,
@@ -57,11 +58,11 @@ export default function App() {
 
   return (
     <div className="max-w-md mx-auto">
-      <div className="justify-center p-8">
+      <div className="justify-center p-4">
         <h2 className="text-3xl font-bold text-center">
           Statistics for All the Places MR challenge
         </h2>
-        <p className="text-center">as of {dt}</p>
+        <p className="text-center">as of {dt} EST</p>
         <div className="flex p-4">
           <Button
             color="primary"
@@ -71,7 +72,7 @@ export default function App() {
             target="_blank"
             href="https://maproulette.org/browse/challenges/43561"
           >
-            link to Map Roulette project
+            MapRoulette project
           </Button>
           <Button
             color="default"
@@ -90,9 +91,7 @@ export default function App() {
         aria-label="Table with ATP statistics by state"
         sortDescriptor={list.sortDescriptor}
         onSortChange={list.sort}
-        classNames={{
-          table: "min-h-[400px]",
-        }}
+        className="pb-8"
       >
         <TableHeader>
           <TableColumn key="state" allowsSorting>
