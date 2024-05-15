@@ -20,20 +20,19 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview --port 5173"
+    "preview": "vite preview --port 5173",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.15.14",
     "@nextui-org/react": "^2.2.10",
     "@react-stately/data": "^3.11.3",
-    "@types/react-syntax-highlighter": "^15.5.11",
     "framer-motion": "^11.0.12",
     "gh-pages": "^6.1.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-syntax-highlighter": "^15.5.0"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.64",

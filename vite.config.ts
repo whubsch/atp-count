@@ -11,5 +11,6 @@ export default defineConfig({
   },
   },
   plugins: [react()],
-  build: {"outDir": "docs"}
+  // build: {"outDir": "docs"}
+  base: "/atp-count/"
 })
