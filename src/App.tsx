@@ -92,6 +92,9 @@ export default function App() {
         sortDescriptor={list.sortDescriptor}
         onSortChange={list.sort}
         className="pb-8"
+        classNames={{
+          table: "min-h-[400px]",
+        }}
       >
         <TableHeader>
           <TableColumn key="state" allowsSorting>
