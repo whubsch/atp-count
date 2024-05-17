@@ -97,13 +97,14 @@ with open(CHALLENGE_FILE, "r", encoding="utf-8") as f:
 
     comb = [
         {
-            "state": state_abbreviations.get(k),
-            "unfixed": v,
-            "fixed": touched.get(k, 0),
-            "pct_fixed": round(touched.get(k, 0) / (touched.get(k, 0) + v), 3),
+            "state": st,
+            "unfixed": state.get(abbr, 0),
+            "fixed": touched.get(abbr, 0),
+            "pct_fixed": round(
+                touched.get(abbr, 0) / (touched.get(abbr, 0) + state.get(abbr, 0)), 3
+            ),
         }
-        for k, v in state.items()
-        if state_abbreviations.get(k)
+        for abbr, st in state_abbreviations.items()
     ]
     table = sorted(comb, key=lambda d: d["state"])
 
