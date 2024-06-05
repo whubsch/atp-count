@@ -6,7 +6,6 @@ import requests
 
 state_abbreviations = {
     "AL": "Alabama",
-    "AK": "Alaska",
     "AZ": "Arizona",
     "AR": "Arkansas",
     "CA": "California",
@@ -15,7 +14,6 @@ state_abbreviations = {
     "DE": "Delaware",
     "FL": "Florida",
     "GA": "Georgia",
-    "HI": "Hawaii",
     "ID": "Idaho",
     "IL": "Illinois",
     "IN": "Indiana",
@@ -105,6 +103,7 @@ with open(CHALLENGE_FILE, "r", encoding="utf-8") as f:
             ),
         }
         for abbr, st in state_abbreviations.items()
+        if (touched.get(abbr, 0) + state.get(abbr, 0)) != 0
     ]
     table = sorted(comb, key=lambda d: d["state"])
 
